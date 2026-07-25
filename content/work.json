@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "ref": "EXHIBIT 01",
+      "title": "Your Weekly Health Newsletter",
+      "category": "Email Newsletters",
+      "tags": ["Content & Storytelling", "Editorial Leadership"],
+      "description": "Noticed long-form health articles weren't getting read, so I proposed and launched a visual-storytelling newsletter instead. Led the 4-person editorial team behind it and grew readership significantly."
+    },
+    {
+      "ref": "EXHIBIT 02",
+      "title": "Structured LinkedIn Outreach System",
+      "category": "Sales & Outreach Copy",
+      "tags": ["B2B Growth", "Outreach Strategy"],
+      "description": "Lead a 4-person outreach team for HR-tech B2B growth, each carrying a 50+ weekly contact target. Personally reached 150+ HR leaders and executives across African companies in under a month."
+    }
+  ]
+}

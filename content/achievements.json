@@ -1,0 +1,38 @@
+{
+  "academic": [
+    {"name": "First Class Honours, Philosophy, University of Ibadan", "year": "2025"},
+    {"name": "Best Graduating Student, Class Rank 1 of 66", "year": "2025"},
+    {"name": "Departmental Prize for Best Graduating Student in Philosophy", "year": "2025"},
+    {"name": "Prof. Peter Oluwambe Bodurin Prize in Philosophy", "year": "2025"},
+    {"name": "Late Prof. Kolawole Aderemi Olu-Owolabi Annual Award, Best Student in Epistemology", "year": "2025"}
+  ],
+  "fellowships": [
+    {"name": "SDGs Advocate, UN SDSN Youth Nigeria, Cohort 8", "year": ""},
+    {"name": "GLOW Global Cohort, Women Empowering Nations", "year": ""},
+    {"name": "Fellow, Leadership Accelerator Programme, LEAP Africa", "year": ""},
+    {"name": "Media and Information Literacy Fellow and Ambassador, Black Girl's Dream Initiative", "year": ""},
+    {"name": "African Liberty Writing Fellowship", "year": ""}
+  ],
+  "certifications": [
+    {"name": "Advanced Professional Certificate in Marketing Communications, London Executive Education", "year": "2025"},
+    {"name": "DFA Digital and Social Media Marketing Certificate, Tech4Dev", "year": "2025"},
+    {"name": "Certificate of Graduation, Public Speaking and Event Hosting Training, \"Speak Like a Pro\" Academy, JCI Nigeria", "year": "2024"},
+    {"name": "Certificate of Completion, Digital Marketing Training, Ladies in Tech Africa, The Incubator Hub", "year": "2025"},
+    {"name": "Certificate of Achievement, Terraskills Tech Bootcamp, Major in Digital Marketing, Terraskills Learning Systems", "year": "2024"},
+    {"name": "Certificate of Completion, Search Engine Optimization Course, LinkedIn", "year": "2021"},
+    {"name": "Certificate of Presentation, Lagos Studies Africa (LSA) Conference", "year": "2026"},
+    {"name": "Strengthening Women's Leadership in the Gender-Climate-Peace Nexus, UNITAR", "year": ""},
+    {"name": "Introduction to Behavioural Science in Public Policy, The World Bank", "year": ""},
+    {"name": "Career Readiness Mentorship Programme, Global Mentorship Initiative", "year": ""},
+    {"name": "Virtual Assistance Skills in the Digital Age, ALX", "year": "2024"},
+    {"name": "Executive Assistant Certificate, SheLeads Africa", "year": ""}
+  ],
+  "awards": [
+    {"name": "Overall Winner, MindTheGap Interplatoon Debate Competition, NYSC Orientation Camp", "year": "2025"},
+    {"name": "Alumni Spotlight, Jobberman Learning Alumni Community", "year": "2026"},
+    {"name": "Top 4 Best Health Journalists on Campus Nominee, University of Ibadan", "year": "2024, 2025"},
+    {"name": "Winner, UNICAF International Women's Day Essay Competition", "year": "2024"},
+    {"name": "Winner, Michael Olubusade Essay Competition", "year": "2024"},
+    {"name": "Overall Winner, We-Mentorship International Women's Day Essay Competition", "year": "2023"}
+  ]
+}

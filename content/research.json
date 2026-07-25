@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "ref": "STUDY 01",
+      "title": "Working in the Margins",
+      "type": "Policy Paper",
+      "tags": ["Policy Paper", "Primary Fieldwork"],
+      "summary": "Primary fieldwork with 31 market women and the market association leader in Egbeda Market, Oyo State. Examines informal labour exclusion under SDG 8. Now headed toward policy and civil actors.",
+      "problem": "Market women in Egbeda, Oyo State work within Nigeria's large informal economy, where existing labour policy rarely accounts for how they actually earn, borrow, or access support, leaving many excluded from protections designed on paper.",
+      "method": "Structured interviews conducted in Yoruba with market traders and the market association leader, followed by data coding and thematic analysis grounded in SDG 8 targets on decent work and economic growth.",
+      "participants": "31 market women and the market association leader, Egbeda Market, Oyo State.",
+      "findings": "Most women lack access to formal credit and rely on informal savings systems. Labour conditions on the ground fall outside what existing SDG 8-aligned frameworks reach in practice, despite being designed to protect informal workers.",
+      "recommendation": "Policy frameworks need direct input from informal workers themselves, not only data collected about them, paired with accessible credit and safety-net mechanisms designed around how informal traders actually work.",
+      "impact": "Prepared for dissemination to policy and civil society actors working on labour and gender-inclusive economic policy in Oyo State.",
+      "link": ""
+    }
+  ]
+}
