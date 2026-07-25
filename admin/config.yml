@@ -1,0 +1,99 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "achievements"
+    label: "Achievements"
+    files:
+      - name: "achievements"
+        label: "Achievements List"
+        file: "content/achievements.json"
+        fields:
+          - label: "Academic Honors"
+            name: "academic"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Year", name: "year", widget: "string", required: false}
+              - {label: "Certificate / Document", name: "image", widget: "image", required: false}
+          - label: "Fellowships"
+            name: "fellowships"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Year", name: "year", widget: "string", required: false}
+              - {label: "Certificate / Document", name: "image", widget: "image", required: false}
+          - label: "Certifications"
+            name: "certifications"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Year", name: "year", widget: "string", required: false}
+              - {label: "Certificate / Document", name: "image", widget: "image", required: false}
+          - label: "Awards & Recognitions"
+            name: "awards"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Year", name: "year", widget: "string", required: false}
+              - {label: "Certificate / Document", name: "image", widget: "image", required: false}
+
+  - name: "work"
+    label: "Work Samples"
+    folder: "content/work"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - "Long-form Articles"
+          - "SEO Content"
+          - "Blog Posts"
+          - "Email Newsletters"
+          - "Social Media"
+          - "Web/Meta Descriptions"
+          - "Sales & Outreach Copy"
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: []
+      - {label: "Reference Label", name: "ref", widget: "string", hint: "e.g. EXHIBIT 04"}
+      - {label: "Description", name: "body", widget: "markdown"}
+
+  - name: "research"
+    label: "Research & Policy"
+    files:
+      - name: "research"
+        label: "Studies"
+        file: "content/research.json"
+        fields:
+          - label: "Studies"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Reference Label", name: "ref", widget: "string", hint: "e.g. STUDY 02"}
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                options:
+                  - "Policy Paper"
+                  - "Publication"
+                  - "Conference Presentation"
+                  - "Fieldwork"
+              - {label: "Tags", name: "tags", widget: "list", default: []}
+              - {label: "Short Summary", name: "summary", widget: "text"}
+              - {label: "Problem", name: "problem", widget: "text", required: false}
+              - {label: "Method", name: "method", widget: "text", required: false}
+              - {label: "Participants", name: "participants", widget: "text", required: false}
+              - {label: "Key Findings", name: "findings", widget: "text", required: false}
+              - {label: "Recommendation", name: "recommendation", widget: "text", required: false}
+              - {label: "Impact", name: "impact", widget: "text", required: false}
+              - {label: "External Link (Zenodo, SSRN, etc.)", name: "link", widget: "string", required: false}
