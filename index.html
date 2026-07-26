@@ -1,23 +1,736 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager — Omolola Sadik</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omolola Sadik - Design Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111315;
+    --paper:#FFFFFF;
+    --paper-dim:#F5F5F3;
+    --navy:#1F3A5F;
+    --gold:#A9792C;
+    --green:#35573C;
+    --rust:#8C3B2E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 28px;}
+  a{color:inherit;}
+
+  /* ---- Header ---- */
+  header{
+    padding:22px 0 18px;
+    border-bottom:1px solid rgba(20,24,31,0.12);
+  }
+  .header-row{display:flex; justify-content:space-between; align-items:center;}
+  .seal{
+    width:40px; height:40px; border-radius:50%;
+    border:1.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:14px;
+    flex-shrink:0;
+  }
+  .site-name{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;}
+
+  /* ---- Hero ---- */
+  .hero{padding:56px 0 40px;}
+  .ref-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--rust);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom:18px;
+  }
+  .ref-eyebrow::before{content:''; width:18px; height:1px; background:var(--rust);}
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(1.7rem, 6.5vw, 2.5rem);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--gold);}
+  .role-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--navy);
+    margin-top:14px;
+    text-transform:uppercase;
+  }
+  .hero-copy{
+    margin-top:34px;
+    font-size:1.18rem;
+    max-width:52ch;
+    color:rgba(20,24,31,0.82);
+  }
+  .cta-row{display:flex; gap:12px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:14px 22px;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+
+  /* ---- Divider w/ seal ---- */
+  .divider{
+    display:flex; align-items:center; gap:14px;
+    margin:52px 0 40px;
+  }
+  .divider .line{flex:1; height:1px; background:rgba(20,24,31,0.15);}
+  .divider .seal{width:30px; height:30px; font-size:10px;}
+
+  /* ---- About ---- */
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--navy);
+    margin-bottom:10px;
+  }
+  h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.9rem;
+    margin-bottom:20px;
+    line-height:1.15;
+  }
+  .about-body p{margin-bottom:18px; font-size:1.08rem; max-width:68ch; color:rgba(20,24,31,0.85);}
+  .about-body strong{color:var(--ink); font-weight:600;}
+
+  .stat-strip{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:rgba(20,24,31,0.15);
+    margin-top:32px; border:1px solid rgba(20,24,31,0.15);
+  }
+  .stat:last-child:nth-child(odd){grid-column:1 / -1;}
+  .stat{background:var(--paper-dim); padding:18px;}
+  .stat .num{font-family:'Fraunces', serif; font-size:1.8rem; font-weight:500;}
+  .stat .lbl{font-family:'Public Sans', sans-serif; font-size:0.92rem; line-height:1.45; color:rgba(20,24,31,0.75); margin-top:8px;}
+
+  /* ---- Work teaser ---- */
+  .work-item{
+    padding:22px 0;
+    border-top:1px solid rgba(20,24,31,0.15);
+  }
+  .work-item:last-child{border-bottom:1px solid rgba(20,24,31,0.15);}
+  .tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px; letter-spacing:0.05em; text-transform:uppercase;
+    padding:4px 9px; border-radius:2px;
+  }
+  .tag.health{background:rgba(53,87,60,0.12); color:var(--green);}
+  .tag.policy{background:rgba(140,59,46,0.12); color:var(--rust);}
+  .tag.b2b{background:rgba(180,135,46,0.15); color:var(--gold);}
+  .work-title{font-family:'Fraunces', serif; font-size:1.25rem; font-weight:500; margin-bottom:6px;}
+  .work-desc{font-size:1.02rem; color:rgba(20,24,31,0.72); max-width:50ch;}
+  .work-ref{font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(20,24,31,0.4); float:right;}
+
+  .approach-step{padding:24px 0; border-top:1px solid rgba(20,24,31,0.15);}
+  .approach-step:last-child{border-bottom:1px solid rgba(20,24,31,0.15);}
+  .approach-num{
+    font-family:'IBM Plex Mono', monospace; font-size:11px;
+    color:var(--navy); letter-spacing:0.1em; margin-bottom:6px;
+  }
+  .approach-title{
+    font-family:'Fraunces', serif; font-weight:500; font-size:1.35rem;
+    margin-bottom:8px;
+  }
+  .approach-body{font-size:1.05rem; color:rgba(20,24,31,0.8); max-width:56ch;}
+  .approach-arrow{
+    text-align:center; font-family:'IBM Plex Mono', monospace;
+    color:var(--gold); font-size:14px; padding:2px 0;
+  }
+
+  /* ---- Nav ---- */
+  .menu-btn{
+    width:40px; height:40px; background:none; border:none; cursor:pointer;
+    display:flex; flex-direction:column; justify-content:center; gap:5px; align-items:flex-end;
+  }
+  .menu-btn span{display:block; width:26px; height:1.5px; background:var(--ink);}
+  .menu-btn span:nth-child(2){width:18px;}
+  .nav-overlay{
+    position:fixed; inset:0; background:var(--paper);
+    z-index:50; display:none; flex-direction:column;
+    padding:22px 28px;
+  }
+  .nav-overlay.open{display:flex;}
+  .nav-overlay .header-row{margin-bottom:60px;}
+  .nav-list{list-style:none; display:flex; flex-direction:column; gap:2px;}
+  .nav-list a{
+    font-family:'Fraunces', serif; font-size:1.4rem; font-weight:500;
+    text-decoration:none; padding:14px 0; border-bottom:1px solid rgba(20,24,31,0.1);
+  }
+  .nav-list .nav-ref{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--navy);
+    display:block; margin-bottom:2px; letter-spacing:0.08em;
+  }
+
+  /* ---- Achievements ---- */
+  .ach-group{margin-bottom:36px;}
+  .ach-group-title{
+    font-family:'IBM Plex Mono', monospace; font-size:12px;
+    text-transform:uppercase; letter-spacing:0.08em; color:var(--gold);
+    margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid rgba(20,24,31,0.15);
+  }
+  .ach-item{
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:12px 0; border-bottom:1px solid rgba(20,24,31,0.08);
+    font-size:0.98rem;
+  }
+  .ach-item .ach-left{display:flex; align-items:center; gap:12px; flex:1;}
+  .ach-thumb{
+    width:44px; height:44px; object-fit:cover; border-radius:4px;
+    border:1px solid rgba(20,24,31,0.15); flex-shrink:0; cursor:pointer;
+  }
+  .ach-item .ach-name{color:var(--ink);}
+  .ach-item .ach-year{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(20,24,31,0.45);
+    white-space:nowrap; padding-top:2px;
+  }
+
+  /* ---- Placeholder sections ---- */
+  .placeholder-box{
+    border:1px dashed rgba(20,24,31,0.3); padding:28px 20px; text-align:center;
+    margin-top:20px;
+  }
+  .placeholder-box .ph-title{font-family:'Fraunces', serif; font-size:1.2rem; margin-bottom:6px;}
+  .placeholder-box .ph-sub{font-size:0.92rem; color:rgba(20,24,31,0.6);}
+
+  /* ---- Contact ---- */
+  .contact-box{
+    background:var(--ink); color:var(--paper);
+    padding:48px 28px; text-align:center; border-radius:2px;
+  }
+  .contact-box h2{color:var(--paper);}
+  .contact-box .about-body p{color:rgba(255,255,255,0.75); max-width:44ch; margin:0 auto 28px;}
+  .contact-links{display:flex; flex-direction:column; gap:12px; margin-top:28px;}
+  .contact-links a{
+    display:block; text-align:center; cursor:pointer;
+    border:1px solid rgba(255,255,255,0.3); padding:14px 20px;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none;
+    color:var(--paper);
+  }
+
+  /* ---- Skills ---- */
+  .skill-row{
+    background:var(--paper-dim); border-radius:6px;
+    padding:14px 16px; margin-bottom:8px;
+    font-size:0.98rem; display:flex; align-items:center; gap:10px;
+  }
+  .skill-row::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0;}
+
+  /* ---- Tools ---- */
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;}
+  .chip{
+    background:var(--paper-dim); border-radius:20px; padding:10px 18px;
+    font-size:0.9rem;
+  }
+
+  /* ---- Work filter tabs ---- */
+  .filter-tabs{display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 32px;}
+  .filter-tab{
+    background:var(--paper-dim); border:none; border-radius:20px;
+    padding:10px 16px; font-family:'Public Sans',sans-serif; font-size:0.85rem;
+    cursor:pointer; color:var(--ink);
+  }
+  .filter-tab.active{background:var(--ink); color:var(--paper);}
+  .cat-marker{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .cat-dot{width:9px; height:9px; border-radius:50%; background:var(--rust);}
+  .cat-label{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy);}
+  .empty-state{padding:30px 0; color:rgba(20,24,31,0.5); font-size:0.95rem;}
+
+  /* ---- How I Can Help ---- */
+  .impact-row{
+    display:flex; gap:18px; align-items:flex-start;
+    padding:22px 0; border-top:1px solid rgba(20,24,31,0.12);
+  }
+  .impact-row:last-child{border-bottom:1px solid rgba(20,24,31,0.12);}
+  .impact-num{
+    font-family:'IBM Plex Mono', monospace; font-size:13px;
+    padding-top:3px; flex-shrink:0; width:28px;
+  }
+  .impact-text{font-size:1.02rem; color:rgba(20,24,31,0.85);}
+  .impact-text strong{font-family:'Fraunces', serif; font-weight:500; font-style:italic; color:var(--ink);}
+
+  .study-detail{padding:14px 0; border-top:1px solid rgba(20,24,31,0.1);}
+  .study-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--navy); margin-bottom:6px;
+  }
+  .study-value{font-size:0.98rem; color:rgba(20,24,31,0.85);}
+
+  footer{padding:40px 0 60px; text-align:center;}
+  .note{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(20,24,31,0.45);
+    margin-top:6px;
+  }
+
+  /* ---- Desktop / larger screens ---- */
+  @media (min-width: 768px){
+    .wrap{max-width:820px; padding:0 40px;}
+    body{font-size:18px;}
+    h1{font-size:clamp(2.2rem, 4vw, 2.9rem); line-height:1.2;}
+    h2{font-size:2.2rem;}
+    .hero{padding:80px 0 56px;}
+    .hero-copy{font-size:1.25rem; max-width:58ch;}
+    .about-body p{font-size:1.12rem;}
+    .stat-strip{grid-template-columns:repeat(3, 1fr);}
+    .stat:last-child:nth-child(odd){grid-column:auto;}
+    .nav-list{max-width:520px;}
+    .nav-list a{font-size:1.7rem;}
+    .cat-marker, .impact-row, .ach-item{font-size:1.02rem;}
+    footer{padding:56px 0 72px;}
+  }
+  @media (min-width: 1080px){
+    .wrap{max-width:960px;}
+  }
+</style>
+<script>
+  function toggleNav(){
+    document.getElementById('navOverlay').classList.toggle('open');
+  }
+
+  function esc(s){
+    if(!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function filterWork(cat, btn){
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    const labelEl = document.getElementById('activeCatLabel');
+    if(labelEl) labelEl.textContent = cat;
+    const items = document.querySelectorAll('#workItems .work-item');
+    let visible = 0;
+    items.forEach(item => {
+      const cats = (item.dataset.cat || '').split(',');
+      if(cats.includes(cat)){ item.style.display=''; visible++; }
+      else { item.style.display='none'; }
+    });
+    const emptyEl = document.getElementById('workEmpty');
+    if(emptyEl) emptyEl.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function renderWork(items){
+    const container = document.getElementById('workItems');
+    if(!container) return;
+    container.innerHTML = items.map(it => {
+      const tagClasses = ['health','b2b','policy'];
+      const tagsHtml = (it.tags || []).map((t,i) =>
+        `<span class="tag ${tagClasses[i % tagClasses.length]}">${esc(t)}</span>`).join('');
+      return `<div class="work-item" data-cat="${esc(it.category)}" style="display:none;">
+        <span class="work-ref">${esc(it.ref)}</span>
+        <div class="tags">${tagsHtml}</div>
+        <div class="work-title">${esc(it.title)}</div>
+        <div class="work-desc">${esc(it.description)}</div>
+      </div>`;
+    }).join('');
+    const firstTab = document.querySelector('.filter-tab');
+    if(firstTab) filterWork(firstTab.textContent.trim(), firstTab);
+  }
+
+  function renderResearch(items){
+    const container = document.getElementById('researchItems');
+    if(!container) return;
+    const fieldOrder = [
+      ['problem','Problem'], ['method','Method'], ['participants','Participants'],
+      ['findings','Key Findings'], ['recommendation','Recommendation'], ['impact','Impact']
+    ];
+    container.innerHTML = items.map(it => {
+      const tagClasses = ['policy','health','b2b'];
+      const tagsHtml = (it.tags || []).map((t,i) =>
+        `<span class="tag ${tagClasses[i % tagClasses.length]}">${esc(t)}</span>`).join('');
+      const detailsHtml = fieldOrder.filter(([key]) => it[key]).map(([key,label]) =>
+        `<div class="study-detail"><div class="study-label">${label}</div><div class="study-value">${esc(it[key])}</div></div>`
+      ).join('');
+      const linkHtml = it.link ? `<div class="study-detail"><div class="study-label">Link</div><div class="study-value"><a href="${esc(it.link)}" target="_blank">${esc(it.link)}</a></div></div>` : '';
+      return `<div class="work-item">
+        <span class="work-ref">${esc(it.ref)}</span>
+        <div class="tags">${tagsHtml}</div>
+        <div class="work-title">${esc(it.title)}</div>
+        <div class="work-desc">${esc(it.summary)}</div>
+        ${detailsHtml}${linkHtml}
+      </div>`;
+    }).join('');
+  }
+
+  function renderAchGroup(elementId, title, items){
+    const el = document.getElementById(elementId);
+    if(!el || !items || !items.length) return;
+    const rows = items.map(it => {
+      const year = it.year ? `<span class="ach-year">${esc(it.year)}</span>` : '<span class="ach-year"></span>';
+      const thumb = it.image ? `<img class="ach-thumb" src="${esc(it.image)}" alt="${esc(it.name)} certificate" onclick="window.open('${esc(it.image)}','_blank')">` : '';
+      return `<div class="ach-item"><div class="ach-left">${thumb}<span class="ach-name">${esc(it.name)}</span></div>${year}</div>`;
+    }).join('');
+    el.innerHTML = `<div class="ach-group-title">${title}</div>${rows}`;
+  }
+
+  function renderAchievements(data){
+    renderAchGroup('achAcademic', 'Academic Honors', data.academic);
+    renderAchGroup('achFellowships', 'Fellowships', data.fellowships);
+    renderAchGroup('achCertifications', 'Certifications', data.certifications);
+    renderAchGroup('achAwards', 'Awards &amp; Recognitions', data.awards);
+  }
+
+  async function loadContent(){
+    try {
+      const [workRes, researchRes, achRes] = await Promise.all([
+        fetch('content/work.json'),
+        fetch('content/research.json'),
+        fetch('content/achievements.json')
+      ]);
+      const work = await workRes.json();
+      const research = await researchRes.json();
+      const achievements = await achRes.json();
+      renderWork(work.items || []);
+      renderResearch(research.items || []);
+      renderAchievements(achievements);
+    } catch (err) {
+      console.error('Content failed to load:', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadContent);
+</script>
 </head>
 <body>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+<div class="nav-overlay" id="navOverlay">
+  <div class="header-row">
+    <span class="site-name">Omolola Sadik</span>
+    <button class="menu-btn" onclick="toggleNav()"><span></span><span></span></button>
+  </div>
+  <ul class="nav-list">
+    <li><a href="#work" onclick="toggleNav()"><span class="nav-ref">01</span>Work</a></li>
+    <li><a href="#approach" onclick="toggleNav()"><span class="nav-ref">02</span>My Approach</a></li>
+    <li><a href="#about" onclick="toggleNav()"><span class="nav-ref">03</span>About</a></li>
+    <li><a href="#how-i-help" onclick="toggleNav()"><span class="nav-ref">04</span>How I Can Help</a></li>
+    <li><a href="#skills" onclick="toggleNav()"><span class="nav-ref">05</span>Skills &amp; Tools</a></li>
+    <li><a href="#achievements" onclick="toggleNav()"><span class="nav-ref">06</span>Achievements</a></li>
+    <li><a href="#research" onclick="toggleNav()"><span class="nav-ref">07</span>Research &amp; Policy</a></li>
+    <li><a href="#contact" onclick="toggleNav()"><span class="nav-ref">08</span>Contact</a></li>
+  </ul>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="header-row">
+      <span class="site-name">Omolola Sadik</span>
+      <button class="menu-btn" onclick="toggleNav()"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="ref-eyebrow">LAGOS, NIGERIA</div>
+    <h1>Communications strategist, research writer, and policy thinker who
+    turns complexity into <em>clarity</em>, and clarity into <em>action</em>.</h1>
+    <p class="hero-copy">
+      I help teams turn complex ideas into clear communication and
+      research-backed strategy. I work across growth marketing, editorial
+      leadership, and public policy research, bringing rigorous thinking and
+      precise execution to every project.
+    </p>
+    <div class="cta-row">
+      <a href="#work" class="btn btn-primary">View my work →</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="about">
+    <div class="section-label">About</div>
+    <h2>Communications strategist, backed by research</h2>
+    <div class="about-body">
+      <p>I work at the intersection of communications, growth marketing, and
+      policy research. Over the past two years, I have managed editorial
+      calendars and content strategy for six or more clients across health,
+      technology, SaaS, and education, and led a 4-person B2B outreach team,
+      personally reaching over 150 HR leaders and executives while each team
+      member carried a 50+ weekly contact target. I have also built media
+      partnerships that secured sponsored coverage for a growth-stage
+      HR-tech platform, led a four-person editorial team, and launched a
+      newsletter that grew its own readership from the ground up.</p>
+      <p>My academic background is in Philosophy, where I graduated First
+      Class and was named Best Graduating Student out of a class of 66 at
+      the University of Ibadan. That training in argument construction,
+      critical analysis, and evidence-based reasoning shapes my research
+      work: I led field interviews with 31 market women and the market
+      association leader in Egbeda LGA, coded the data myself, and authored
+      a policy paper on informal labour exclusion now headed toward policy
+      and civil actors.</p>
+      <p>I bring the same rigour and focus to content and marketing projects
+      as I do to policy projects: understand the audience, break down the
+      project, research thoroughly, and communicate with precision.</p>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><div class="num">First Class</div><div class="lbl">Philosophy, University of Ibadan · Best Graduating Student, Rank 1/66</div></div>
+      <div class="stat"><div class="num">150+</div><div class="lbl">HR leads &amp; executives reached via structured LinkedIn outreach in under a month</div></div>
+      <div class="stat"><div class="num">6+</div><div class="lbl">Clients managed across content &amp; editorial calendars, 100% on-time delivery</div></div>
+      <div class="stat"><div class="num">40+</div><div class="lbl">People interviewed across primary field research</div></div>
+      <div class="stat"><div class="num">50+</div><div class="lbl">Content writing &amp; SEO audit consultations delivered</div></div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="how-i-help">
+    <div class="section-label">How I Can Help</div>
+    <h2>Where I add value</h2>
+
+    <div class="impact-row">
+      <div class="impact-num" style="color:var(--rust);">01</div>
+      <div class="impact-text"><strong>Research, done right.</strong> Run primary fieldwork and interviews that meet rigorous academic and institutional review.</div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-num" style="color:var(--navy);">02</div>
+      <div class="impact-text"><strong>Findings into action.</strong> Turn research findings, fieldwork responses, and raw data into policy briefs and reports that people can act on.</div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-num" style="color:var(--green);">03</div>
+      <div class="impact-text"><strong>Systems that scale.</strong> Build content systems, editorial calendars, brand voice, and SEO strategy that keep multiple stakeholders aligned.</div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-num" style="color:var(--gold);">04</div>
+      <div class="impact-text"><strong>Reach that matters.</strong> Lead outreach and partnership campaigns that reach decision-makers at scale.</div>
+    </div>
+    <div class="impact-row">
+      <div class="impact-num" style="color:var(--rust);">05</div>
+      <div class="impact-text"><strong>People, developed.</strong> Manage, coach, and mentor motivated individuals and teams.</div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="skills">
+    <div class="section-label">Skills &amp; Tools</div>
+    <h2>Skills</h2>
+
+    <div class="cat-marker"><div class="cat-dot" style="background:var(--green)"></div><div class="cat-label">Communications &amp; Content</div></div>
+    <div class="skill-row">Content Strategy &amp; Planning</div>
+    <div class="skill-row">Long-Form &amp; SEO Writing</div>
+    <div class="skill-row">Email Newsletter Development</div>
+    <div class="skill-row">Website Copy &amp; Video Scriptwriting</div>
+    <div class="skill-row">Social Media Content Management</div>
+    <div class="skill-row">Brand Voice Development &amp; Consistency</div>
+
+    <div class="cat-marker" style="margin-top:28px;"><div class="cat-dot" style="background:var(--gold)"></div><div class="cat-label">Growth &amp; Partnerships</div></div>
+    <div class="skill-row">B2B/B2C Growth Marketing</div>
+    <div class="skill-row">LinkedIn &amp; Structured Outreach Strategy</div>
+    <div class="skill-row">Media &amp; Partnership Development</div>
+    <div class="skill-row">Stakeholder Communication</div>
+
+    <div class="cat-marker" style="margin-top:28px;"><div class="cat-dot" style="background:var(--rust)"></div><div class="cat-label">Research &amp; Policy</div></div>
+    <div class="skill-row">Primary Research &amp; Fieldwork</div>
+    <div class="skill-row">Policy Analysis &amp; Writing</div>
+    <div class="skill-row">Research, Critical Thinking &amp; Analysis</div>
+    <div class="skill-row">Argumentation &amp; Logical Reasoning</div>
+
+    <div class="cat-marker" style="margin-top:28px;"><div class="cat-dot" style="background:var(--navy)"></div><div class="cat-label">Core Competencies</div></div>
+    <div class="skill-row">Project Management &amp; Deadline Execution</div>
+    <div class="skill-row">Team &amp; Editorial Leadership</div>
+    <div class="skill-row">Attention to Detail &amp; Adaptability</div>
+    <div class="skill-row">Effective Communication</div>
+    <div class="skill-row">Proactive Learner &amp; Receptive to Feedback</div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="tools">
+    <div class="section-label">Skills &amp; Tools</div>
+    <h2>Tools &amp; Competencies</h2>
+
+    <div class="cat-label" style="margin-bottom:12px;">Content, SEO &amp; Publishing</div>
+    <div class="chip-row">
+      <div class="chip">WordPress</div>
+      <div class="chip">Shopify</div>
+      <div class="chip">Decap CMS</div>
+      <div class="chip">Ahrefs</div>
+      <div class="chip">SEMrush</div>
+      <div class="chip">Grammarly</div>
+    </div>
+
+    <div class="cat-label" style="margin-bottom:12px;">Research</div>
+    <div class="chip-row">
+      <div class="chip">Google Scholar</div>
+      <div class="chip">SEMrush</div>
+      <div class="chip">Ahrefs</div>
+      <div class="chip">ResearchGate</div>
+      <div class="chip">Academia.edu</div>
+      <div class="chip">Zenodo</div>
+    </div>
+
+    <div class="cat-label" style="margin-bottom:12px;">Design</div>
+    <div class="chip-row">
+      <div class="chip">Canva</div>
+    </div>
+
+    <div class="cat-label" style="margin-bottom:12px;">Project &amp; Collaboration</div>
+    <div class="chip-row">
+      <div class="chip">Notion</div>
+      <div class="chip">Trello</div>
+      <div class="chip">Jira</div>
+      <div class="chip">Slack</div>
+      <div class="chip">HubSpot</div>
+      <div class="chip">Google Workspace</div>
+      <div class="chip">Microsoft Office Suite</div>
+    </div>
+
+    <div class="cat-label" style="margin-bottom:12px;">AI Tools</div>
+    <div class="chip-row">
+      <div class="chip">ChatGPT</div>
+      <div class="chip">Claude</div>
+      <div class="chip">Gemini</div>
+      <div class="chip">Perplexity</div>
+      <div class="chip">Grok</div>
+      <div class="chip">DeepSeek</div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="approach">
+    <div class="section-label">Process</div>
+    <h2>My Approach</h2>
+
+    <div class="approach-step">
+      <div class="approach-num">01</div>
+      <div class="approach-title">Observe</div>
+      <div class="approach-body">I pay attention before I act. I look for
+      patterns in audience behaviour, lived experiences, stakeholder
+      feedback, research findings, and market signals to understand what's
+      really happening.</div>
+    </div>
+    <div class="approach-arrow">↓</div>
+
+    <div class="approach-step">
+      <div class="approach-num">02</div>
+      <div class="approach-title">Analyse</div>
+      <div class="approach-body">I question assumptions, identify root
+      causes, and connect ideas that others might treat separately. My
+      philosophy training taught me to break down concepts and think deeply
+      about problems before I recommend solutions.</div>
+    </div>
+    <div class="approach-arrow">↓</div>
+
+    <div class="approach-step">
+      <div class="approach-num">03</div>
+      <div class="approach-title">Communicate</div>
+      <div class="approach-body">The primary purpose of communication for me
+      is clarity and understanding. Whether I'm writing a thought article on
+      LinkedIn, a research paper, a policy brief, a search engine optimized
+      article, or a stakeholder report, I turn complex ideas into language
+      my target audience can understand and act on.</div>
+    </div>
+    <div class="approach-arrow">↓</div>
+
+    <div class="approach-step">
+      <div class="approach-num">04</div>
+      <div class="approach-title">Learn and Improve</div>
+      <div class="approach-body">I treat every project as feedback.
+      Performance data, interviews, and stakeholder responses inform the
+      next iteration until the work achieves its purpose. Every project
+      leaves behind insights that make the next one stronger.</div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="work">
+    <div class="section-label">Selected Work</div>
+    <h2>Portfolio</h2>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterWork('Long-form Articles', this)">Long-form Articles</button>
+      <button class="filter-tab" onclick="filterWork('SEO Content', this)">SEO Content</button>
+      <button class="filter-tab" onclick="filterWork('Blog Posts', this)">Blog Posts</button>
+      <button class="filter-tab" onclick="filterWork('Email Newsletters', this)">Email Newsletters</button>
+      <button class="filter-tab" onclick="filterWork('Social Media', this)">Social Media</button>
+      <button class="filter-tab" onclick="filterWork('Web/Meta Descriptions', this)">Web/Meta Descriptions</button>
+      <button class="filter-tab" onclick="filterWork('Sales & Outreach Copy', this)">Sales &amp; Outreach Copy</button>
+    </div>
+
+    <div class="cat-marker"><div class="cat-dot"></div><div class="cat-label" id="activeCatLabel">Long-form Articles</div></div>
+
+    <p id="workEmpty" class="empty-state">No samples uploaded to this category yet. Check back soon, or filter by another tab to see current samples.</p>
+
+    <div id="workItems"></div>
+
+    <p class="note" style="text-align:left; margin-top:18px;">Each tab holds its own category. Upload samples into any tab through the CMS, and they'll appear filtered exactly like this.</p>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="achievements">
+    <div class="section-label">Achievements</div>
+    <h2>Proof that the work holds up.</h2>
+
+    <div id="achAcademic" class="ach-group"></div>
+    <div id="achFellowships" class="ach-group"></div>
+    <div id="achCertifications" class="ach-group"></div>
+    <div id="achAwards" class="ach-group"></div>
+
+    <p class="note" style="text-align:left;">Each entry gets a certificate/document upload slot in the live CMS. Empty ones simply don't render.</p>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="research">
+    <div class="section-label">Research &amp; Policy</div>
+    <h2>Papers, fieldwork &amp; publications</h2>
+
+    <div id="researchItems"></div>
+
+    <p class="note" style="text-align:left; margin-top:18px;">Every future study you upload can follow this same structure, Problem, Method, Participants, Key Findings, Recommendation, Impact, filled in through the CMS.</p>
+
+    <div class="placeholder-box">
+      <div class="ph-title">More studies coming</div>
+      <div class="ph-sub">Publications, conference presentations, and additional fieldwork will be added here as they're finalized.</div>
+    </div>
+  </section>
+
+  <div class="divider"><div class="line"></div><div class="seal">OS</div><div class="line"></div></div>
+
+  <section id="contact">
+    <div class="contact-box">
+      <div class="about-body">
+        <p>I'm open to full-time roles and select collaborative projects in communications, policy research, and content strategy.</p>
+      </div>
+      <h2>Ready to work together?</h2>
+      <p class="note" style="color:rgba(255,255,255,0.6);">Contact me.</p>
+      <div class="contact-links">
+        <a href="mailto:omololasadik@gmail.com">✉ Email Me</a>
+        <a href="https://www.linkedin.com/in/omolola-sadik-08b2b4237" target="_blank">in LinkedIn</a>
+        <a href="https://x.com/Sheis_Sadik" target="_blank">𝕏 Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="seal" style="margin:0 auto;">OS</div>
+    <div class="note">© 2026 Omolola Sadik. All rights reserved.</div>
+  </footer>
+</div>
+
 </body>
 </html>
